@@ -1,6 +1,6 @@
-package space.maxus.xai.save.fields
+package space.maxus.cdlib.fields
 
-import space.maxus.xai.save.SaveField
+import space.maxus.cdlib.SaveField
 
 class FloatField(override var value: Float) : SaveField<Float>() {
     override fun serialize(): ByteArray {

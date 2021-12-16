@@ -1,13 +1,13 @@
-package space.maxus.xai.save.serializers
+package space.maxus.cdlib.serializers
 
-import space.maxus.xai.save.FieldSerializer
-import space.maxus.xai.save.FieldType
-import space.maxus.xai.save.SaveField
-import space.maxus.xai.save.fields.PairField
-import space.maxus.xai.save.fields.StringField
+import space.maxus.cdlib.FieldSerializer
+import space.maxus.cdlib.FieldType
+import space.maxus.cdlib.SaveField
+import space.maxus.cdlib.fields.PairField
+import space.maxus.cdlib.fields.StringField
 import java.io.ByteArrayInputStream
 
-object PairSerializer: FieldSerializer<Pair<StringField, SaveField<*>>, PairField<SaveField<*>>> {
+object PairSerializer : FieldSerializer<Pair<StringField, SaveField<*>>, PairField<SaveField<*>>> {
     override fun deserialize(from: ByteArrayInputStream): PairField<SaveField<*>> {
         // string ordinal
         from.read()

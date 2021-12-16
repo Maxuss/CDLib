@@ -1,7 +1,7 @@
-package space.maxus.xai.save.serializers
+package space.maxus.cdlib.serializers
 
-import space.maxus.xai.save.FieldSerializer
-import space.maxus.xai.save.fields.IntField
+import space.maxus.cdlib.FieldSerializer
+import space.maxus.cdlib.fields.IntField
 import java.io.ByteArrayInputStream
 import java.nio.ByteBuffer
 

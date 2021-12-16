@@ -1,6 +1,6 @@
-package space.maxus.xai.save
+package space.maxus.cdlib
 
-import space.maxus.xai.save.serializers.*
+import space.maxus.cdlib.serializers.*
 
 enum class FieldType(val pos: Int, val serializer: FieldSerializer<*, *>) {
     NULL(0x00, NullSerializer),
@@ -13,10 +13,11 @@ enum class FieldType(val pos: Int, val serializer: FieldSerializer<*, *>) {
     LIST(0x07, ListSerializer),
     TUPLE(0x08, TupleSerializer),
     ;
+
     companion object {
         fun findByInt(seek: Int): FieldType {
             val filtered = values().filter { value -> value.pos == seek }
-            if(filtered.isEmpty())
+            if (filtered.isEmpty())
                 return NULL
             return filtered[0]
         }

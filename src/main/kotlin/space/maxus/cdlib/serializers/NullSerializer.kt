@@ -1,9 +1,9 @@
-package space.maxus.xai.save.serializers
+package space.maxus.cdlib.serializers
 
-import space.maxus.xai.save.FieldSerializer
-import space.maxus.xai.save.fields.NullField
+import space.maxus.cdlib.FieldSerializer
+import space.maxus.cdlib.fields.NullField
 import java.io.ByteArrayInputStream
 
-object NullSerializer: FieldSerializer<Unit, NullField> {
+object NullSerializer : FieldSerializer<Unit, NullField> {
     override fun deserialize(from: ByteArrayInputStream): NullField = NullField()
 }

@@ -1,6 +1,6 @@
-package space.maxus.xai.save.fields
+package space.maxus.cdlib.fields
 
-import space.maxus.xai.save.SaveField
+import space.maxus.cdlib.SaveField
 import java.nio.ByteBuffer
 
 class LongField(override var value: Long) : SaveField<Long>() {

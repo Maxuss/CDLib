@@ -1,8 +1,8 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package space.maxus.xai.save
+package space.maxus.cdlib
 
-import space.maxus.xai.save.fields.NullField
+import space.maxus.cdlib.fields.NullField
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -10,7 +10,7 @@ import java.io.IOException
 open class SaveFile {
     open var fields: Array<SaveField<*>?> = arrayOf()
 
-    fun serialize() : ByteArray {
+    fun serialize(): ByteArray {
         val stream = ByteArrayOutputStream()
         val bytes = stream.use {
             // magic int
@@ -18,12 +18,12 @@ open class SaveFile {
             // fields amount
             it.write(fields.size)
 
-            for(field in fields) {
+            for (field in fields) {
                 // padding
                 it.write(1)
                 // field data
                 val bytes = field?.serialize()
-                if(bytes == null) {
+                if (bytes == null) {
                     it.write(0x00)
                     continue
                 }
@@ -41,12 +41,12 @@ open class SaveFile {
         fields[pos] = value
     }
 
-    inline fun <reified T: Any> receive(pos: Int) = fields[pos] as SaveField<T>
-    inline fun <reified T: Any> put(pos: Int, value: SaveField<T>) {
+    inline fun <reified T : Any> receive(pos: Int) = fields[pos] as SaveField<T>
+    inline fun <reified T : Any> put(pos: Int, value: SaveField<T>) {
         fields[pos] = value
     }
 
-    inline fun <reified T: SaveField<R>, R: Any> add(value: T) {
+    inline fun <reified T : SaveField<R>, R : Any> add(value: T) {
         fields += value
     }
 
@@ -55,10 +55,10 @@ open class SaveFile {
     }
 
     companion object {
-        fun deserialize(data: ByteArray) : SaveFile {
+        fun deserialize(data: ByteArray): SaveFile {
             val stream = ByteArrayInputStream(data)
             val save = stream.use {
-                if(it.read() != 127)
+                if (it.read() != 127)
                     throw IOException("Corrupted save file format! Could not find magic number at the top!")
 
                 // size of array
@@ -67,9 +67,9 @@ open class SaveFile {
                 save.fields = arrayOfNulls(size)
                 var cur = it.read()
                 var pos = 0
-                while(cur != 127) {
+                while (cur != 127) {
                     // padding
-                    if(cur == 1) {
+                    if (cur == 1) {
                         val intType = it.read()
                         val type = FieldType.findByInt(intType)
                         val serialized = type.serializer.deserialize(it)
