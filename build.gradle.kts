@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "space.maxus"
-version = "1.0-RELEASE"
+version = "1.0.0-stable"
 
 repositories {
     mavenCentral()
@@ -16,7 +16,6 @@ repositories {
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
 
-    api(kotlin("jvm"))
     api("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
 }
 
